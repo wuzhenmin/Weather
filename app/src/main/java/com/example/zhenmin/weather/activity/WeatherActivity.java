@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.zhenmin.weather.R;
+import com.example.zhenmin.weather.service.AutoUpdateService;
 import com.example.zhenmin.weather.util.HttpCallbackListener;
 import com.example.zhenmin.weather.util.HttpUtil;
 import com.example.zhenmin.weather.util.Utility;
@@ -65,9 +66,12 @@ public class WeatherActivity extends Activity implements View.OnClickListener {
         temp2Text.setText(prefs.getString("temp2",""));
         weatherDespText.setText(prefs.getString("weather_desp",""));
         publishText.setText(prefs.getString("publish_time",""));
-        currentDateText.setText(prefs.getString("current_date",""));
+        currentDateText.setText(prefs.getString("current_date", ""));
         weatherIfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
+
 
     }
 
